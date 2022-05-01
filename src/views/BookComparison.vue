@@ -1,15 +1,52 @@
+
+<template>
+
+
+<h2>Bereits gebucht</h2>
+<li v-for="book in booked" >
+{{book}}
+</li>
+<hr>
+<h2>Nutzer versucht zu buchen</h2>
+
+<li v-for="attempt in bookAttempt" >
+{{attempt}}
+</li>
+
+<hr>
+<h2>Nutzer kann nicht buchen</h2>
+<li v-for="cantBeBooked in cantBook">
+{{cantBeBooked}}
+</li>
+
+
+</template>
+
+
+
 <script setup lang="ts">
 import {onMounted} from 'vue'
 
 let booked :string[];
+
 let bookAttempt: string[];
 let cantBook:string[]; 
+
 // saved bookings by date and place id
-booked = ['2022-01-07','2022-01-08'];
+booked = ['2022-01-07','2022-01-08','2022-01-21'];
 
 // user entered dates for specific place 
-bookAttempt=['2022-01-08','2022-01-11']
+bookAttempt=['2022-01-08','2022-01-11','2022-01-12','2022-01-21']
 
+function getBookingsbySeat(seatID:string,startDate:string,endDate:string){
+
+
+}
+
+function getBookAttemptsByUser(userInputDate:string){
+
+
+}
 
 function bookingCompare(bookedDates:string[],bookAttemptDates:string[]){
 
@@ -27,28 +64,7 @@ return cantBook;
 
 cantBook = bookingCompare(booked,bookAttempt);
 
-//onMounted(()=>bookingCompare(booked,bookAttempt))
+onMounted(()=>bookingCompare(booked,bookAttempt))
 
 
 </script>
-
-<template>
-<div>
-<h1>Booking Function</h1>
-
-
-</div>
-<h2>already booked</h2>
-<div v-for="book in booked" >
-{{book}}
-</div>
-<h2>bookAttempt by user</h2>
-<div v-for="attempt in bookAttempt" >
-{{attempt}}
-</div>
-<hr>
-<h2>cant be booked by user</h2>
-<div v-for="cantBeBooked in cantBook">
-{{cantBeBooked}}
-</div>
-</template>
