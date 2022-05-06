@@ -2,7 +2,7 @@
   <div class="about">
     <h1>This is an about page</h1>
 
-    <Form></Form>
+    <Form formStyle="bcm"></Form>
   </div>
 </template>
 
@@ -17,5 +17,5 @@
 </style>
 
 <script setup>
-import Form from '@/components/basic/Form.vue'
+import Form from '@/components/forms/Form.vue'
 </script>
