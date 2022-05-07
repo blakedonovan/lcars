@@ -9,7 +9,7 @@
         <div class="col-75">
 
 
-            <FormInput input id="loginName" type="text" v-model="loginName"></FormInput>
+            <FormInput id="loginName" type="text" v-model="loginName"></FormInput>
         </div>
         <p></p>
         <div class="col-25">
@@ -72,9 +72,7 @@ let password = ref("")
 </script>
 
 <style lang="scss" scoped>
-* {
-    box-sizing: border-box;
-}
+
 
 
 
@@ -113,9 +111,9 @@ input {
 }
 
 $formColLayouts:col-25,
-col-33 col-75;
+col-33, col-75;
 $formColLayoutSize:25,
-33 75;
+33, 75;
 
 @each $formColLayout in $formColLayouts {
     $i: index($formColLayouts, $formColLayout);

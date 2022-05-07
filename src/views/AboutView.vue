@@ -1,9 +1,19 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
 
-    <Form formStyle="bcm"></Form>
-  </div>
+
+    <Form formStyle="info"></Form>
+
+
+<Tablex :items='tableItems'>
+<tr>
+
+  <td slot-scope="row">
+
+    {{row.item.text}}
+  </td>
+</tr>
+
+</Tablex>
 </template>
 
 <style>
@@ -16,6 +26,13 @@
 }
 </style>
 
-<script setup>
+<script setup >
 import Form from '@/components/forms/Form.vue'
+import Tablex from '@/components/basic/tableBasic.vue'
+blue ='text'
+
+tableItems=[
+
+  {text:'google strategy'}
+]
 </script>
