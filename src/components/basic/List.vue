@@ -1,19 +1,20 @@
 <template>
     <form @submit="sendData">
 
-        <slot v-for="(label, index) in labels" :label="label" :key="index">
+        <slot v-for="(input, index) in inputs" :input="input" :key="index">
 
         </slot>
 
 
-        <button>Send</button>
+       <button type="submit">send</button>
     </form>
+
 </template>
 
 <script>
 export default {
     props: {
-        labels: {
+        inputs: {
             type: Array,
             default: () => []
         },
@@ -24,9 +25,6 @@ export default {
     methods: {
         sendData(e) {
 
-            for (let key of Object.keys(this.formData)) {
-                console.log(key + "->" + this.formData[key])
-            }
 
             e.preventDefault();
 

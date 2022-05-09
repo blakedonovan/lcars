@@ -3,30 +3,31 @@
 
 
 
-
-  <Listing :labels="formContent"  >
+<h3>Form from template</h3>
+  <Listing :inputs="formContent"  :key="index">
     <template v-slot='formFields' >
 
-      <label 
-      :for="`${formFields.label.inputFieldName}`"> 
-      {{ formFields.label.label }} </label><br />
+    
 
-      <input type="text" 
-      :id="`${formFields.label.inputFieldName}`"
-       :placeholder="`${formFields.label.placeholder}`"
-        :name="`${formFields.label.inputFieldName}`" 
+      <input 
+      :type="`${formFields.input.type}`"
+      :id="`${formFields.input.inputFieldName}`"
+      :placeholder="`${formFields.input.placeholder}`"
+      :name="`${formFields.input.inputFieldName}`" 
        >
 
       <p></p>
-<button @click="read">send</button>
+
     </template>
 
   </Listing>
 
   <hr />
+  <h3>Form from parent</h3>
   <form @submit.prevent="read">
 <input v-for="(content,index) in formContent" 
 :key="index"
+:type="`${content.type}`"
 :placeholder="`${content.placeholder}`" 
 :name="`${content.inputFieldName}`"
 
@@ -60,10 +61,10 @@ export default {
       ,
 
       formContent: [
-        { label: "Benutzer", inputFieldName: "user", placeholder: "Nutzername" },
-        { label: "Kurzname", inputFieldName: "userShort", placeholder: "Kurzname" },
-        { label: "Abteilung", inputFieldName: "department", placeholder: "Abteilung" },
-        { label: "Passwort", inputFieldName: "pw", placeholder: "Passwort" }
+        { label: "Benutzer",type:'text', inputFieldName: "user", placeholder: "Nutzername" },
+        { label: "Kurzname",type:'text', inputFieldName: "userShort", placeholder: "Kurzname" },
+        { label: "Abteilung",type:'text', inputFieldName: "department", placeholder: "Abteilung" },
+        { label: "Passwort",type:'password', inputFieldName: "pw", placeholder: "Passwort" }
       ],
 
     };
@@ -81,7 +82,7 @@ export default {
 
     read(){
    for (let key of Object.keys(this.formData.field)) {
-                console.log( this.formData.field[key])
+                alert( this.formData.field[key])
             }
     }
 
