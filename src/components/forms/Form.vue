@@ -1,15 +1,14 @@
 <template>
 
-
     <form @submit.prevent :class="[formStyle]">
         <div class="col-25">
             <label for="loginName">Benutzer</label>
 
         </div>
         <div class="col-75">
+            <FormInput id="passwort" type="password" v-model="password">
 
-
-            <FormInput input id="loginName" type="text" v-model="loginName"></FormInput>
+            </FormInput>
         </div>
         <p></p>
         <div class="col-25">
@@ -27,15 +26,19 @@
         </div>
     </form>
 
+
 </template>
 
 
-<script setup lang="ts">
+
+<script setup>
 import { onMounted, ref, computed } from 'vue'
 import FormInput from '@/components/basic/FormInput.vue';
 import ButtonSubmit from '@/components/basic/ButtonCustomizeable.vue'
 // anything declared in script setup is directly useable in the template
 // macro function to define Props
+
+
 defineProps({
 
 
@@ -49,7 +52,15 @@ defineProps({
         default: ""
     },
 
+    formShow: {
 
+        type: Boolean,
+        default: false
+    },
+    inputItems: {
+        type: Array,
+        default: () => []
+    }
 
 });
 
@@ -64,7 +75,12 @@ let password = ref("")
 // define functions
 
 
+function callForm() {
+    formShow = !formShow
 
+
+
+}
 
 
 // call function on lifecycle 
